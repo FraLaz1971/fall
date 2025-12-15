@@ -1,0 +1,7 @@
+      PROGRAM LIMITS
+        IMPLICIT NONE
+        REAL RMIN
+        PARAMETER(RMIN=1.19209E-07)
+        PRINT '(F14.12)' 'RMIN=',RMIN
+        STOP
+      END
