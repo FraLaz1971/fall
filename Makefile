@@ -1,4 +1,4 @@
-FC=f77
+FC=f77 -g
 FD=f77
 OEXT=.o
 EEXT=
@@ -10,7 +10,7 @@ ROOT=
 #LIBS=-lpgplot -lpng -lz
 FDFLAGS=
 LIBS=
-SRCS=common.f
+SRCS=common.f limits.f
 OBJS = $(SRCS:.f=$(OEXT))
 TARGETS = $(OBJS:$(OEXT)=$(EEXT))
 .PHONY: all clean
