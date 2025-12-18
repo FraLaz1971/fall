@@ -1,0 +1,43 @@
+      PROGRAM MSORT
+        IMPLICIT NONE
+        INTEGER NEMPL,I,NCHAN
+        PARAMETER(NEMPL=10)
+        INTEGER STANUM(NEMPL)
+        LOGICAL CHANGE,DONE
+        DATA STANUM/205,165,247,114,204,244,95,212,32,122/
+5       CHANGE=.TRUE.
+        NCHAN=0
+        DO 10,I=1,NEMPL
+          IF (CHANGE) THEN 
+            CALL SHOW(STANUM,NEMPL)
+            CALL PASS(STANUM,I,NEMPL,CHANGE)
+            NCHAN=NCHAN+1
+          ELSE
+            IF (NCHAN.GT.1) GOTO 5
+          END IF
+10      CONTINUE
+          CALL SHOW(STANUM,NEMPL)
+      END
+      SUBROUTINE SHOW(STANUM,N)
+        IMPLICIT NONE
+        INTEGER STANUM(N),I,N
+        PRINT *,'SHOWING ARRAY'
+        DO 10,I=1,N
+          PRINT '(I3)', STANUM(I)
+10      CONTINUE
+      END
+      SUBROUTINE PASS(STANUM,START,N,CHANGE)
+        IMPLICIT NONE
+        INTEGER STANUM(N),TANU1,I,N,START
+        LOGICAL CHANGE
+        CHANGE=.FALSE.
+        PRINT *,'SORTING PASS',START
+        DO 10,I=START,N-1
+          IF(STANUM(I+1).LT.STANUM(I)) THEN
+            TANU1=STANUM(I)
+            STANUM(I)=STANUM(I+1)
+            STANUM(I+1)=TANU1
+            CHANGE=.TRUE.
+          END IF
+10      CONTINUE
+      END
