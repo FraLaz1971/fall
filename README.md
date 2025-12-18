@@ -27,7 +27,25 @@ This data is sorted into increasing order of staff numbers before input to the
 rest of the program.
 write a program to update the master file and to produce weekly payslips showing
 staff_number, surname,  name , gross_pay, deductions, nett_pay
-
+###
+this is the schema of the program
+1. Open old and new files
+2. Read fixed rates, ... etc
+3. Repeat the following until the end of the master file
+-  3.1 Read next employee record
+-  3.2 Read next data record
+-  3.3 If they match then:
+-      3.3.1  Calculate gross weekly pay
+-      3.3.2  Calculate deductions
+-      3.3.3  Calculate nett pay
+-      3.3.4  Write updated record to new file
+-      3.3.5  Print payslip
+-      otherwise
+-      3.3.6  Print warning message
+-      3.3.7  Update tax details
+-      3.3.8  Write updated record to new file
+-      3.3.9  Print payslip
+-      3.3.10 'Backspace' file of data records
 ###
 iostat.f
 ###
