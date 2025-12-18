@@ -10,7 +10,7 @@ ROOT=
 #LIBS=-lpgplot -lpng -lz
 FDFLAGS=
 LIBS=
-SRCS=common.f limits.f iostat.f endfile.f endf2unf.f readunf1.f
+SRCS=common.f limits.f iostat.f endfile.f endf2unf.f readunf1.f append.f files.f
 OBJS = $(SRCS:.f=$(OEXT))
 TARGETS = $(OBJS:$(OEXT)=$(EEXT))
 .PHONY: all clean

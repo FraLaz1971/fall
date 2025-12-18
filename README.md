@@ -20,13 +20,17 @@ For each employee, the 2 rates and n. of basic hours are fixed
 wich falls below a fixed limit
 - (d) The nett pay is the GROSS PAY less tax and health insurance deduction
 A file is kept which contains details of all weekly paid employees in increasing
-order of their staff number
-Each week a file of data is prepared containing, for each employee, their
-staff number, the hours worked in hours and minutes during the previous week
-This data is sorted into increasing order of staff numbers before input to the
+order of their staff number.
+Each week another file of data is prepared containing, for each employee, their
+staff number, the hours worked in hours and minutes during the previous week.
+This data file is sorted into increasing order of staff numbers before input to the
 rest of the program.
+The file 2025-12-15_data.dat contains the data on what worked for each employee in the
+week between monday 8/12 and friday 12/12 2025
+The file 2025-12-08_data.dat contains the data on what worked for each employee in the
+week between monday 1/12 and friday 5/12 2025
 write a program to update the master file and to produce weekly payslips showing
-staff_number, surname,  name , gross_pay, deductions, nett_pay
+staff_number, name , gross_pay, deductions, nett_pay
 ###
 this is the schema of the program
 1. Open old and new files
