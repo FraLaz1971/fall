@@ -92,8 +92,6 @@ C AND GIVES A ORDERED FOR STAFF N. DATA FILE
             IF (ROW(J:J).EQ.' ') ROW(J:J)='0'
 20        CONTINUE
           WRITE(12,'(A9)')ROW
-c          WRITE(*,200)STANUM(I),WTWH(I),WTWM(I)
-c          WRITE(12,200)STANUM(I),WTWH(I),WTWM(I)
 40      CONTINUE
         CLOSE(12)
         GOTO 9999

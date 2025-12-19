@@ -20,7 +20,7 @@ For each employee, the 2 rates and n. of basic hours are fixed
 wich falls below a fixed limit
 - (d) The nett pay is the GROSS PAY less tax and health insurance deduction.
 A file is kept which contains details of all weekly paid employees in increasing
-order of their staff number.
+order of their staff number.  
 Each week another file of data is prepared containing, for each employee, their
 staff number, the hours worked in hours and minutes during the previous week.  
 This data file is sorted into increasing order of staff numbers before input to the
