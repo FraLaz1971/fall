@@ -73,6 +73,7 @@ fun100.f
 ###
 program fun100 calculate points of the function f(x)=sin(x)exp(-x/a) for values of x included between 
 x=0 and x=2. in step of dx=0.1 . where a=0.2
+###
 ![f(x)=sin(x)exp(-x/0.2)](fun100.png "f(x)=sin(x)exp(-x/0.2)")
 ###
 
