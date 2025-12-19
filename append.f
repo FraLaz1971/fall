@@ -1,0 +1,23 @@
+      PROGRAM APPEND
+        IMPLICIT NONE
+        CHARACTER*64 IFNAM
+        CHARACTER*1024 LINE
+        LOGICAL E
+        INTEGER I
+        PRINT *,'ENTER INPUT FILE NAME'
+        READ *,IFNAM
+        INQUIRE(FILE=IFNAM,EXIST=E)
+        IF(.NOT.E) GOTO 9100
+        OPEN(11,FILE=IFNAM)
+10      READ(11,'(A)',END=20) LINE
+        GOTO 10
+20      BACKSPACE(11)
+        WRITE(11,'(A)',ERR=9000) 'This is a new row of the file'
+        WRITE(11,'(A)',ERR=9000) 'And this is another'
+        CLOSE(11)
+        GOTO 9999
+9000    PRINT *,'ERROR IN WRITING A ROW'
+        GOTO 9999
+9100    PRINT *,'INPUT FILE DOES NOT EXIST: INSERT ANOTHER'
+9999    STOP
+      END
