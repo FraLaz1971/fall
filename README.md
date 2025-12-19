@@ -18,7 +18,7 @@ For each employee, the 2 rates and n. of basic hours are fixed
 - (b) Tax is a fixed percentage of the (GROSS PAY - tax_free_allowance)
 - (c) Health insurance is a fixed percentage of that part of the gross pay
 wich falls below a fixed limit
-- (d) The nett pay is the GROSS PAY less tax and health insurance deduction.
+- (d) The nett pay is the GROSS PAY less tax and health insurance deduction.  
 A file is kept which contains details of all weekly paid employees in increasing
 order of their staff number.  
 Each week another file of data is prepared containing, for each employee, their
