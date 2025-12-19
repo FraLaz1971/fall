@@ -11,24 +11,24 @@ endfile.f
 ###
 files.f
 ###
-files.f is a program based on the example 12.3 of Ellis,1982 (PAYROL)
+files.f is a program based on the example 12.3 of Ellis,1982 (PAYROL).  
 Employees of a certain organization have their weekly pay this way:
 - (a) GROSS PAY: N hours * basic rate +  M plus subsequent hours * higher rate
 For each employee, the 2 rates and n. of basic hours are fixed
 - (b) Tax is a fixed percentage of the (GROSS PAY - tax_free_allowance)
 - (c) Health insurance is a fixed percentage of that part of the gross pay
 wich falls below a fixed limit
-- (d) The nett pay is the GROSS PAY less tax and health insurance deduction
+- (d) The nett pay is the GROSS PAY less tax and health insurance deduction.
 A file is kept which contains details of all weekly paid employees in increasing
 order of their staff number.
 Each week another file of data is prepared containing, for each employee, their
-staff number, the hours worked in hours and minutes during the previous week.
+staff number, the hours worked in hours and minutes during the previous week.  
 This data file is sorted into increasing order of staff numbers before input to the
-rest of the program.
+rest of the program.  
 The file 2025-12-15_data.dat contains the data on what worked for each employee in the
-week between monday 8/12 and friday 12/12 2025
+week between monday 8/12 and friday 12/12 2025  
 The file 2025-12-08_data.dat contains the data on what worked for each employee in the
-week between monday 1/12 and friday 5/12 2025
+week between monday 1/12 and friday 5/12 2025  
 write a program to update the master file and to produce weekly payslips showing
 staff_number, name , gross_pay, deductions, nett_pay
 ###
@@ -59,3 +59,7 @@ openfile.f
 ###
 readunf1.f
 ###
+in2files.f
+###
+The program `in2files` creates the inputs for the program files (PAYROL). 2 Weekly employees data are then sorted
+and saved in files with the _o.dat suffix/extension.
