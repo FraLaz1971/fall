@@ -1,0 +1,70 @@
+C PROGRAM SHOWING THE USAGE OF BLOCK DATA SUBPROGRAM
+      PROGRAM BLKDAT
+C RID: RECORD ID
+        INTEGER DBDIM,I
+        PARAMETER(DBDIM=1024)
+        INTEGER RID(DBDIM)
+        CHARACTER*20 ENAME(DBDIM),SURNAM(DBDIM),PLACE(DBDIM),
+     &PLNAM(DBDIM),PNUM(DBDIM),CITY(DBDIM),PROVIN(DBDIM),NATION(DBDIM),
+     &CELLN(DBDIM),HOMEN(DBDIM)
+        CHARACTER*32 EMAIL(DBDIM)
+C PC: POSTCODE (CAP FOR ITALY)
+        CHARACTER*5 PC(DBDIM)
+        COMMON /CONTAC/RID,ENAME,SURNAM,PLACE,PLNAM,PNUM,PC,CITY,
+     &PROVIN,NATION,CELLN,HOMEN,EMAIL
+        DO 10 I=1,6
+          CALL SHWREC(I)
+10      CONTINUE    
+        STOP
+      END
+C
+      BLOCK DATA
+        INTEGER DBDIM
+        PARAMETER(DBDIM=1024)
+        INTEGER RID(DBDIM)
+        CHARACTER*20 ENAME(DBDIM),SURNAM(DBDIM),PLACE(DBDIM),
+     &PLNAM(DBDIM),PNUM(DBDIM),CITY(DBDIM),PROVIN(DBDIM),NATION(DBDIM),
+     &CELLN(DBDIM),HOMEN(DBDIM)
+        CHARACTER*32 EMAIL(DBDIM)
+C PC: POSTCODE (CAP FOR ITALY)
+        CHARACTER*5 PC(DBDIM)
+        COMMON /CONTAC/RID,ENAME,SURNAM,PLACE,PLNAM,PNUM,PC,CITY,
+     &PROVIN,NATION,CELLN,HOMEN,EMAIL
+        DATA RID/1,2,3,4,5,6,1018*0/,ENAME/'Francesco','Lisa',
+     &'Massimiliano','Alessandro','Alberto','Maria Elena',1018*' '/
+     &,SURNAM/'Lazzarotto','Pattaro','Lazzarotto','Lazzarotto',
+     &'Lazzarotto','Lazzarotto',1018*' '/,
+     &PLACE/'via','via','via','via','via','via',1018*' '/,
+     &PLNAM/'Agordat','Fani','R.Zandonai','Pianari','Monte Grappa',
+     &'G. B. Vico',1018*' '/,PNUM/'15','16','77','23','27','11',1018*' '
+     &/,CITY/'Padova','Due Carrare','Latina','Crosara di Marostica',
+     &'Maserà','Latina',1018*' '/,PC/'35138','35020','04100','36063',
+     &'35020','04100',1018*' '/,PROVIN/'Padova','Padova','Latina',
+     &'Vicenza','Padova','Latina',1018*' '/,NATION/'Italia','Italia',
+     &'Italia','Italia','Italia','Italia',1018*' '/,CELLN/
+     &'+393357126078','+393409285254','+393892971152','+393338286944',
+     &'+393387971587','+393332476762',1018*' '/,HOMEN/' ',' ',
+     &'+390773600028','+3904241520789',' ','+3907731995778',1018*' '/
+     &,EMAIL/'fralaz1971@gmail.com','lisa.pattaro@gmail.com',' ',
+     &'ale35138@gmail.com','allazza@tin.it','lazzamelena@gmail.com'
+     &,1018*' '/
+      END
+      SUBROUTINE SHWREC(TRID)
+        IMPLICIT NONE
+        INTEGER DBDIM
+        PARAMETER(DBDIM=1024)
+        INTEGER TRID,RID(DBDIM)
+        CHARACTER*20 ENAME(DBDIM),SURNAM(DBDIM),PLACE(DBDIM),
+     &PLNAM(DBDIM),PNUM(DBDIM),CITY(DBDIM),PROVIN(DBDIM),NATION(DBDIM),
+     &CELLN(DBDIM),HOMEN(DBDIM)
+        CHARACTER*32 EMAIL(DBDIM)
+C PC: POSTCODE (CAP FOR ITALY)
+        CHARACTER*5 PC(DBDIM)
+        COMMON /CONTAC/RID,ENAME,SURNAM,PLACE,PLNAM,PNUM,PC,CITY,
+     &PROVIN,NATION,CELLN,HOMEN,EMAIL
+        PRINT 100,RID(TRID),ENAME(TRID),SURNAM(TRID),PLACE(TRID),
+     &PLNAM(TRID),PNUM(TRID),CITY(TRID),PROVIN(TRID),NATION(TRID),
+     &CELLN(TRID),HOMEN(TRID),EMAIL(TRID)
+100     FORMAT(I4,',',10(A20,','),A32)
+        RETURN
+      END

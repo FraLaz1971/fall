@@ -11,7 +11,7 @@
         D2=1E-21
         D3=D1+D2
         PRINT '(A,F22.21)', 'D3=',D3
-        PRINT '(A,F42.1)', 'RMAX= ',RMAX
-        PRINT '(A,F312.1)', 'DMAX= ',DMAX
+        PRINT '(A,F42.1)', 'RMAX= ',RMAX,' (~3.4E38)'
+        PRINT '(A,F312.1)', 'DMAX= ',DMAX,' (~1.79E308)'
         STOP
       END
