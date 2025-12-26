@@ -10,19 +10,23 @@ ROOT=
 FDFLAGS=
 LIBS=
 SRCS=common.f limits.f iostat.f endfile.f endf2unf.f readunf1.f append.f files.f sort.f in2files.f \
-pi.f fun100.f fun101.f fun102.f readfun.f butterfly.f chaos.f euclid.f r2b.f blockdata.f taysin.f \
-form001.f entry.f expand.f wrtdat.f
+pi.f fun100.f fun101.f fun102.f readfun.f butterfly.f chaos.f euclid.f r2b.f taysin.f \
+form001.f entry.f expand.f wrtdat.f formats.f tempfc.f
 OBJS = $(SRCS:.f=$(OEXT))
-TARGETS = $(OBJS:$(OEXT)=$(EEXT)) tracker$(EEXT) entry002$(EEXT) external$(EEXT)
+TARGETS = $(OBJS:$(OEXT)=$(EEXT)) tracker$(EEXT) entry002$(EEXT) external$(EEXT) stats001$(EEXT) dumpblkdata$(EEXT) readblkdata$(EEXT) \
+calc_cmplx$(EEXT)
 .PHONY: all clean
 
 all: $(OBJS) $(TARGETS)
 
 %$(OEXT): %.f
-	$(FC) $(FFLAGS) $< /LIST
+	$(FC) $(FFLAGS) $<
 
 %$(EEXT): %$(OEXT)
 	$(FD) -OUT:$@ $^ $(LIBS) $(FDFLAGS)
+
+randoms$(OEXT): randoms.f
+	$(FC) $(FFLAGS) $<
 
 tracker$(EEXT): tracker.f95
 	$(F95) $< /LINK /o $@
@@ -32,6 +36,28 @@ entry002$(EEXT): entry002.f95
 
 external$(EEXT): external.f95
 	$(F95) $< /LINK /o $@
+
+calc_cmplx$(EEXT): calc_cmplx.f95
+	$(F95) $< /LINK /o $@
+
+stats001$(EEXT): stats001.f randoms$(OEXT)
+	$(FC) $^ /LINK
+
+blockdatas$(OEXT): blockdatas.f
+	$(FC) $(FFLAGS) $<
+
+dumpblkdata$(OEXT): dumpblkdata.f
+	$(FC) $(FFLAGS) $<
+
+dumpblkdata$(EEXT): dumpblkdata$(OEXT) blockdata$(OEXT)
+	$(FD) -OUT:$@ $^ $(LIBS) $(FDFLAGS)
+
+readblkdata$(OEXT): readblkdata.f
+	$(FC) $(FFLAGS) $<
+
+readblkdata$(EEXT): readblkdata$(OEXT) blockdata$(OEXT)
+	$(FD) -OUT:$@ $^ $(LIBS) $(FDFLAGS)
+
 clean:
-	$(RM) $(OBJS) $(TARGETS) tracker$(EEXT) entry002$(EEXT) external$(EEXT)
+	$(RM) $(OBJS) $(TARGETS) tracker$(EEXT) entry002$(EEXT) external$(EEXT) dumpblkdata$(EEXT) readblkdata$(EEXT)
 
