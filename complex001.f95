@@ -5,7 +5,7 @@ PROGRAM complex_arithmetics
 !z1 + z2 = x1 + x2 + i (y1 + y2 )
 !z1 × z2 = x1 × x2 − y1 × y2 + i (x1 × y2 + x2 × y1 )
   TYPE mcomplex
-  REAL x,y
+  REAL :: x,y
   END TYPE mcomplex
   TYPE(mcomplex) :: z1,z2
   PRINT *,'ENTER 2 COMPLEX NUMBERS (Re,Im)'
