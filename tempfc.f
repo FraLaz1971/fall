@@ -1,0 +1,25 @@
+C degF = 1.8*degC + 32 = (9/5)*degC + 32 ---> degC0 = (degF - 32)*5/9
+      PROGRAM TCONV
+      CHARACTER*1 ANS
+      REAL DEGF,DEGC
+10    PRINT *,'CONVERT TEMPERATURE, DO YOU HAVE FAHRENHEIT OR CELSIUS 
+     &(F,C)?'
+      READ *, ANS
+      IF ((ANS.EQ.'F').OR.(ANS.EQ.'f')) THEN
+         PRINT *,'PLEASE ENTER TEMPERATURE IN FAHRENHEIT DEGREES'
+         READ *,DEGF
+         PRINT 100,(DEGF-32.0)*5.0/9.0
+      ELSE IF ((ANS.EQ.'C').OR.(ANS.EQ.'C')) THEN
+         PRINT *,'PLEASE ENTER TEMPERATURE IN CELSIUS DEGREES'
+         READ *,DEGC
+         PRINT 110,1.8*DEGC+32
+      ELSE
+        PRINT *,'PLEASE TYPE F OR C'
+        GOTO 10
+      END IF
+      PRINT *,'PRESS CTRL-C TO END'
+      GOTO 10
+100   FORMAT('TEMPERATURE IS ',F7.2,' degC')
+110   FORMAT('TEMPERATURE IS ',F7.2,' degF')
+      STOP
+      END

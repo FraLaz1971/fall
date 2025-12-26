@@ -1,0 +1,71 @@
+SUBROUTINE LOAD_PEOPLE(MYPERS)
+     IMPLICIT NONE
+	 TYPE person
+		SEQUENCE
+		CHARACTER :: first_name*12, middle_initial*1, last_name*12
+		INTEGER :: age
+		CHARACTER*1 :: gender
+		! M or F or O
+		CHARACTER(LEN=11) :: social_security
+	 END TYPE person
+	 CHARACTER*80 IFNAM ! INPUT FILE NAME
+	 INTEGER I
+  	 INTEGER,PARAMETER :: MDIM=1024
+	 TYPE(PERSON) :: MYPERS(MDIM)
+	 PRINT *,'TYPE INPUT DATA FILE NAME'
+	 READ *,IFNAM
+	 OPEN(11,FILE=IFNAM,ERR=9000)
+	 DO I=1,MDIM
+	   READ(11,100,ERR=9100,END=80) MYPERS(I)%first_name,MYPERS(I)%middle_initial,MYPERS(I)%last_name, &
+       & MYPERS(I)%age,MYPERS(I)%gender,MYPERS(I)%social_security
+	 END DO
+80	 CLOSE(11)
+	 GOTO 9999
+100 FORMAT(A12,1X,A1,1X,A12,1X,I2,1X,A1,1X,A11)
+110 FORMAT('Name: ',A12,1X,A1,1X,A12/,'Age: ',I2/,'gender: ',A1/,'Social Security: ',A11)
+9000 PRINT *,'ERROR IN OPENING INPUT FILE',IFNAM
+	 GOTO 9999
+9100 PRINT *,'ERROR IN READING LINE ',I
+9999 RETURN
+
+END SUBROUTINE LOAD_PEOPLE
+
+PROGRAM USESS
+     IMPLICIT NONE
+	 TYPE person
+		SEQUENCE
+		CHARACTER :: first_name*12, middle_initial*1, last_name*12
+		INTEGER :: age
+		CHARACTER*1 :: gender
+		! M or F or O
+		CHARACTER(LEN=11) :: social_security
+	 END TYPE person
+	 interface
+        SUBROUTINE LOAD_PEOPLE(MYPERS)
+		 TYPE person
+		    SEQUENCE
+			CHARACTER :: first_name*12, middle_initial*1, last_name*12
+			INTEGER :: age
+			CHARACTER*1 :: gender
+			! M or F or O
+			CHARACTER(LEN=11) :: social_security
+		 END TYPE person
+		 CHARACTER*80 IFNAM ! INPUT FILE NAME
+		 INTEGER I
+	  	 INTEGER,PARAMETER :: MDIM=1024
+		 TYPE(PERSON) :: MYPERS(MDIM)
+		END SUBROUTINE LOAD_PEOPLE
+     END INTERFACE
+	CHARACTER*80 IFNAM
+	INTEGER,PARAMETER :: MDIM=1024
+	INTEGER I
+	TYPE(PERSON) MYPERS(MDIM)
+	CALL LOAD_PEOPLE(MYPERS)
+	DO I=1,3
+	WRITE(*, 110,ERR=9000) I,MYPERS(I)%first_name,MYPERS(I)%middle_initial,MYPERS(I)%last_name,&
+       &MYPERS(I)%age,MYPERS(I)%gender,MYPERS(I)%social_security
+	END DO
+110 FORMAT(I2,' Name: ',A12,1X,A1,1X,A12/,'Age: ',I2/,'gender: ',A1/,'Social Security: ',A11)
+9000 PRINT *,'ERROR IN PRINTING RECORD N.',I
+9999 STOP
+END PROGRAM USESS
