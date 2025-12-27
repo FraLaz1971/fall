@@ -14,7 +14,7 @@ pi.f fun100.f fun101.f fun102.f readfun.f butterfly.f chaos.f euclid.f r2b.f tay
 form001.f entry.f expand.f wrtdat.f formats.f tempfc.f
 OBJS = $(SRCS:.f=$(OEXT))
 TARGETS = $(OBJS:$(OEXT)=$(EEXT)) tracker$(EEXT) entry002$(EEXT) external$(EEXT) stats001$(EEXT) dumpblkdata$(EEXT) readblkdata$(EEXT) \
-calc_cmplx$(EEXT)
+calc_cmplx$(EEXT) exams_data$(EEXT) exams001$(EEXT)
 .PHONY: all clean
 
 all: $(OBJS) $(TARGETS)
@@ -40,6 +40,12 @@ external$(EEXT): external.f95
 calc_cmplx$(EEXT): calc_cmplx.f95
 	$(F95) $< /LINK /o $@
 
+exams_data$(EEXT): exams_data.f95 randoms$(OEXT)
+	$(F95) $^ /LINK /o $@
+
+exams001$(EEXT): exams001.f95
+	$(F95) $< /LINK /o $@
+
 stats001$(EEXT): stats001.f randoms$(OEXT)
 	$(FC) $^ /LINK
 
@@ -59,5 +65,7 @@ readblkdata$(EEXT): readblkdata$(OEXT) blockdata$(OEXT)
 	$(FD) -OUT:$@ $^ $(LIBS) $(FDFLAGS)
 
 clean:
-	$(RM) $(OBJS) $(TARGETS) tracker$(EEXT) entry002$(EEXT) external$(EEXT) dumpblkdata$(EEXT) readblkdata$(EEXT)
+	$(RM) $(OBJS) $(TARGETS) tracker$(EEXT) entry002$(EEXT) external$(EEXT) dumpblkdata$(EEXT) readblkdata$(EEXT) \
+exams_data$(EEXT) exams001$(EEXT)
+
 

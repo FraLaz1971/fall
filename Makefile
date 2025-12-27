@@ -14,7 +14,8 @@ pi.f fun100.f fun101.f fun102.f readfun.f butterfly.f chaos.f euclid.f r2b.f tay
 form001.f entry.f expand.f tempfc.f
 OBJS = $(SRCS:.f=$(OEXT))
 TARGETS = $(OBJS:$(OEXT)=$(EEXT)) entry002 tracker external readblkdata$(EEXT) dumpblkdata$(EEXT) exf95001$(EEXT) welcome$(EEXT) \
-complex001$(EEXT) use_cube_root$(EEXT) demo_roots$(EEXT) calc_cmplx$(EEXT) quad_roots$(EEXT) quad_roots_case$(EEXT)
+complex001$(EEXT) use_cube_root$(EEXT) demo_roots$(EEXT) calc_cmplx$(EEXT) quad_roots$(EEXT) quad_roots_case$(EEXT) \
+exams_data$(EEXT) exams001$(EEXT)
 .PHONY: all clean
 
 all: $(OBJS) $(TARGETS)
@@ -58,6 +59,12 @@ use_cube_root$(EEXT): use_cube_root.f95
 welcome$(EEXT): welcome.f95
 	$(F95) $< -o $@
 
+exams_data$(EEXT): exams_data.f95 random.o
+	$(F95) $^ -o $@
+
+exams001$(EEXT): exams001.f95
+	$(F95) $< -o $@
+
 blockdatas$(OEXT): blockdatas.f
 	$(FC) -c $(FFLAGS) $<
 
@@ -76,5 +83,6 @@ readblkdata$(EEXT): readblkdata$(OEXT) blockdata$(OEXT)
 
 clean:
 	$(RM) $(OBJS) $(TARGETS) entry002 tracker external readblkdata$(EEXT) dumpblkdata$(EEXT) welcome$(EEXT)  \
-complex001$(EEXT) use_cube_root$(EEXT) demo_roots$(EEXT) calc_cmplx$(EEXT) quad_roots$(EEXT) quad_roots_case.$(EEXT) fort.*
+complex001$(EEXT) use_cube_root$(EEXT) demo_roots$(EEXT) calc_cmplx$(EEXT) quad_roots$(EEXT) quad_roots_case.$(EEXT) \
+exams_data$(EEXT) exams001$(EEXT) fort.*
 
