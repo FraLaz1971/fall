@@ -7,6 +7,13 @@
 !z2 = x2 + iy2 ,
 !z1 + z2 = x1 + x2 + i (y1 + y2 )
 !z1 × z2 = x1 × x2 − y1 × y2 + i (x1 × y2 + x2 × y1 )
+module complex_data
+  implicit none
+  save
+  TYPE mcomplex
+  REAL :: x,y
+  END TYPE mcomplex
+end module complex_data
 
 program calc_complex
   use complex_data
@@ -21,17 +28,10 @@ program calc_complex
   c_prod=c_mul(z1,z2)
   PRINT 100,c_sum%x,c_sum%y
   PRINT 110,c_prod%x,c_prod%y
-100 FORMAT('z1+z2=',F10.4,'+i*',F10.4)
-110 FORMAT('z1*z2=',F10.4,'+i*',F10.4)
+100 FORMAT('z1+z2=',F12.4,'+i*',F12.4)
+110 FORMAT('z1*z2=',F12.4,'+i*',F12.4)
 end program calc_complex
 
-module complex_data
-  implicit none
-  save
-  TYPE mcomplex
-  REAL :: x,y
-  END TYPE mcomplex
-end module complex_data
 
 function c_add(z1,z2)
 !z1 + z2 = x1 + x2 + i (y1 + y2 )

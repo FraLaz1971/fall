@@ -1,11 +1,6 @@
 !Write a program which first reads the number of people sitting an exame. It should then
 !read their marks (or scores) and print the highest and lowest marks, followed by the
 !average mark for the class.
-program marks
-  IMPLICIT NONE
-  call marks_stat
-end program marks
-!scores in (0,10)
 subroutine marks_stat
   IMPLICIT NONE
   INTEGER :: I,MDIM,RDIM
@@ -37,3 +32,8 @@ subroutine marks_stat
 9100  PRINT *,'ERROR IN READING DATA RECORD',I
 9999  RETURN  
 end subroutine marks_stat
+program marks
+  IMPLICIT NONE
+  call marks_stat
+end program marks
+!scores in (0,10)
