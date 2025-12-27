@@ -48,7 +48,7 @@ C
       SUBROUTINE D2B(STR)
         IMPLICIT NONE
         CHARACTER STR*6,SBIN*17
-        INTEGER DEC,STR2D,REST,I,J
+        INTEGER DEC,STR2D,REST,I
         LOGICAL DEBUG
         SBIN='                 '
         DEBUG=.FALSE.
