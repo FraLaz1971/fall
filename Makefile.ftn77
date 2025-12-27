@@ -11,7 +11,7 @@ FDFLAGS=
 LIBS=
 SRCS=common.f limits.f iostat.f endfile.f endf2unf.f readunf1.f append.f files.f sort.f in2files.f \
 pi.f fun100.f fun101.f fun102.f readfun.f butterfly.f chaos.f euclid.f r2b.f taysin.f \
-form001.f entry.f expand.f wrtdat.f formats.f tempfc.f
+form001.f entry.f expand.f wrtdat.f formats.f tempfc.f bin.f
 OBJS = $(SRCS:.f=$(OEXT))
 TARGETS = $(OBJS:$(OEXT)=$(EEXT)) tracker$(EEXT) entry002$(EEXT) external$(EEXT) stats001$(EEXT) dumpblkdata$(EEXT) readblkdata$(EEXT) \
 calc_cmplx$(EEXT) exams_data$(EEXT) exams001$(EEXT)
