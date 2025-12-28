@@ -17,7 +17,7 @@ form001.f entry.f expand.f
 OBJS = $(SRCS:.f=$(OEXT)) 
 TARGETS = $(OBJS:$(OEXT)=$(EEXT)) blockdata$(OEXT) entry002 external tracker readblkdata$(EEXT) dumpblkdata$(EEXT) welcome$(EEXT)  \
 complex001$(EEXT) use_cube_root$(EEXT) demo_roots$(EEXT) calc_cmplx$(EEXT) quad_roots$(EEXT) quad_roots_case$(EEXT) \
-exams_data$(EEXT) exams001$(EEXT)  bin$(EEXT)
+exams_data$(EEXT) exams001$(EEXT)  bin$(EEXT) points$(EEXT) fibonacci$(EEXT) sin$(EEXT)
 .PHONY: all clean
 
 all: $(OBJS) $(TARGETS)
@@ -70,6 +70,15 @@ exams001$(EEXT): exams001.f95
 exams_data$(EEXT): exams_data.f95 random$(OEXT)
 	$(F95) $^ -o $@
 
+points$(EEXT): points$(EEXT)
+	$(F95) $^ -o $@
+
+fibonacci$(EEXT): fibonacci$(EEXT)
+	$(F95) $^ -o $@
+
+sin$(EEXT): sin$(EEXT)
+	$(F95) $^ -o $@
+
 blockdatas$(OEXT): blockdatas.f
 	$(FC) -c $(FFLAGS) $<
 
@@ -86,5 +95,5 @@ readblkdata$($EEXT): readblkdata.f blockdata$(OEXT)
 clean:
 	$(RM) $(OBJS) $(TARGETS) entry002 external tracker readblkdata$(EEXT) dumpblkdata$(EEXT) welcome$(EEXT)  \
 complex001$(EEXT) use_cube_root$(EEXT) demo_roots$(EEXT) calc_cmplx$(EEXT) quad_roots$(EEXT) quad_roots_case$(EEXT) \
-exams_data$(EEXT) exams001$(EEXT) bin$(EEXT) fort.*
+exams_data$(EEXT) exams001$(EEXT) bin$(EEXT) points$(EEXT) fibonacci$(EEXT) sin$(EEXT) fort.*
 
