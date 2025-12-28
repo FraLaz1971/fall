@@ -11,11 +11,12 @@ FDFLAGS=-L$(ROOT)/usr/lib -L$(PGPLOT_DIR) -Wl,-rpath=$(PGPLOT_DIR)
 LIBS=-lpgplot -lpng -lz -lX11
 SRCS=common.f limits.f iostat.f endfile.f endf2unf.f readunf1.f append.f files.f sort.f in2files.f \
 pi.f fun100.f fun101.f fun102.f readfun.f butterfly.f chaos.f euclid.f r2b.f taysin.f \
-form001.f entry.f expand.f tempfc.f bin.f
+form001.f entry.f expand.f tempfc.f bin.f logical.f
 OBJS = $(SRCS:.f=$(OEXT))
 TARGETS = $(OBJS:$(OEXT)=$(EEXT)) entry002 tracker external readblkdata$(EEXT) dumpblkdata$(EEXT) exf95001$(EEXT) welcome$(EEXT) \
 complex001$(EEXT) use_cube_root$(EEXT) demo_roots$(EEXT) calc_cmplx$(EEXT) quad_roots$(EEXT) quad_roots_case$(EEXT) \
-exams_data$(EEXT) exams001$(EEXT) points$(EEXT) fibonacci$(EEXT) sin$(EEXT)
+exams_data$(EEXT) exams001$(EEXT) points$(EEXT) fibonacci$(EEXT) sin$(EEXT) temp$(EEXT) vectors$(EEXT) vectors2$(EEXT) \
+books$(EEXT) books2$(EEXT)
 .PHONY: all clean
 
 all: $(OBJS) $(TARGETS)
@@ -74,6 +75,21 @@ fibonacci$(EEXT): fibonacci.f95
 sin$(EEXT): sin.f95
 	$(F95) $< -o $@
 
+temp$(EEXT): temp.f95
+	$(F95) $< -o $@
+
+vectors$(EEXT): vectors.f95
+	$(F95) $< -o $@
+
+vectors2$(EEXT): vectors2.f95
+	$(F95) $< -o $@
+
+books$(EEXT): books.f95
+	$(F95) $< -o $@
+
+books2$(EEXT): books2.f95
+	$(F95) $< -o $@
+
 blockdatas$(OEXT): blockdatas.f
 	$(FC) -c $(FFLAGS) $<
 
@@ -93,5 +109,6 @@ readblkdata$(EEXT): readblkdata$(OEXT) blockdata$(OEXT)
 clean:
 	$(RM) $(OBJS) $(TARGETS) entry002 tracker external readblkdata$(EEXT) dumpblkdata$(EEXT) welcome$(EEXT)  \
 complex001$(EEXT) use_cube_root$(EEXT) demo_roots$(EEXT) calc_cmplx$(EEXT) quad_roots$(EEXT) quad_roots_case.$(EEXT) \
-exams_data$(EEXT) exams001$(EEXT) points$(EEXT) fibonacci$(EEXT) sin$(EEXT) fort.*
+exams_data$(EEXT) exams001$(EEXT) points$(EEXT) fibonacci$(EEXT) sin$(EEXT) temp$(EEXT) vectors$(EEXT) vectors2$(EEXT) \
+books$(EEXT) books2$(EEXT) fort.*
 
