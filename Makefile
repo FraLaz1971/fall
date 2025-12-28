@@ -15,7 +15,7 @@ form001.f entry.f expand.f tempfc.f bin.f
 OBJS = $(SRCS:.f=$(OEXT))
 TARGETS = $(OBJS:$(OEXT)=$(EEXT)) entry002 tracker external readblkdata$(EEXT) dumpblkdata$(EEXT) exf95001$(EEXT) welcome$(EEXT) \
 complex001$(EEXT) use_cube_root$(EEXT) demo_roots$(EEXT) calc_cmplx$(EEXT) quad_roots$(EEXT) quad_roots_case$(EEXT) \
-exams_data$(EEXT) exams001$(EEXT)
+exams_data$(EEXT) exams001$(EEXT) points$(EEXT)
 .PHONY: all clean
 
 all: $(OBJS) $(TARGETS)
@@ -65,6 +65,9 @@ exams_data$(EEXT): exams_data.f95 random.o
 exams001$(EEXT): exams001.f95
 	$(F95) $< -o $@
 
+points$(EEXT): points.f95
+	$(F95) $< -o $@
+
 blockdatas$(OEXT): blockdatas.f
 	$(FC) -c $(FFLAGS) $<
 
@@ -84,5 +87,5 @@ readblkdata$(EEXT): readblkdata$(OEXT) blockdata$(OEXT)
 clean:
 	$(RM) $(OBJS) $(TARGETS) entry002 tracker external readblkdata$(EEXT) dumpblkdata$(EEXT) welcome$(EEXT)  \
 complex001$(EEXT) use_cube_root$(EEXT) demo_roots$(EEXT) calc_cmplx$(EEXT) quad_roots$(EEXT) quad_roots_case.$(EEXT) \
-exams_data$(EEXT) exams001$(EEXT) fort.*
+exams_data$(EEXT) exams001$(EEXT) points$(EEXT) fort.*
 
