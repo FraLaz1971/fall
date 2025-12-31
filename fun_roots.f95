@@ -42,6 +42,14 @@ PROGRAM roots
 !
 ! Get range and tolerance information
 !  REAL (KIND=real_6_38) :: x(4096), y(4096)
+!example of the input file in.txt
+!2048 ---> n. of points for the function
+!7    ---> parameter for the extension of the domain
+!-5.0 ---> left extreme of the bounding interval to search for the root
+!-4.0 ---> right extreme of the bounding interval to search for the root
+!1E-6 ---> tolerance until wich verify
+!30   ---> max number of iterations
+
   IFNAM='in.txt'
   open(11,file=IFNAM)
 ! READ NUMBER OF POINTS
@@ -90,7 +98,7 @@ PROGRAM roots
   CALL PGEND
   GOTO 9999
 100 format(F10.6,1X,F10.6)
-110 format('The zero is ', F10.6, ' +- ', F10.6)
+110 format('The zero is ', F10.4, ' +- ', F10.4)
 9000    PRINT *,'ERROR IN BEGINNING PLOT'
 9999    STOP
 END PROGRAM roots
