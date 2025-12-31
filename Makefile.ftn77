@@ -1,5 +1,7 @@
 FC=ftn77
 FD=slink
+PGPLOT_DIR=C:\pgplot
+PGPLOT_FONT=$(PGPLOT_DIR)
 F95=ftn95
 OEXT=.obj
 EEXT=.exe
@@ -8,14 +10,15 @@ ROOT=
 FFLAGS=
 ROOT=
 FDFLAGS=
-LIBS=
+LIBS=$(PGPLOT_DIR)\pgplot.lib
 SRCS=common.f limits.f iostat.f endfile.f endf2unf.f readunf1.f append.f files.f sort.f in2files.f \
 pi.f fun100.f fun101.f fun102.f readfun.f butterfly.f chaos.f euclid.f r2b.f taysin.f \
-form001.f entry.f expand.f wrtdat.f formats.f tempfc.f bin.f
+form001.f entry.f expand.f wrtdat.f formats.f tempfc.f bin.f circle_area001.f
 OBJS = $(SRCS:.f=$(OEXT))
 TARGETS = $(OBJS:$(OEXT)=$(EEXT)) tracker$(EEXT) entry002$(EEXT) external$(EEXT) stats001$(EEXT) dumpblkdata$(EEXT) readblkdata$(EEXT) \
 calc_cmplx$(EEXT) exams_data$(EEXT) exams001$(EEXT) points$(EEXT) fibonacci$(EEXT) sin$(EEXT) temp$(EEXT) vectors$(EEXT) vectors2$(EEXT) \
-books$(EEXT) books2$(EEXT)
+books$(EEXT) books2$(EEXT) realss$(EEXT) reals_portable$(EEXT) fun_roots$(EEXT) endlessdo$(EEXT) cycle$(EEXT) select$(EEXT) \
+select2$(EEXT) quadratic002$(EEXT) fibonacci002$(EEXT) reverse$(EEXT) odds$(EEXT) angles001$(EEXT)
 .PHONY: all clean
 
 all: $(OBJS) $(TARGETS)
@@ -65,11 +68,47 @@ vectors2$(EEXT): vectors2.f95
 fibonacci$(EEXT): fibonacci.f95
 	$(F95) $< /LINK /o $@
 
+fibonacci002$(EEXT): fibonacci002.f95
+	$(F95) $< /LINK /o $@ $(LIBS) $(FDFLAGS)
+
 books$(EEXT): books.f95
 	$(F95) $< /LINK /o $@
 
 books2$(EEXT): books2.f95
 	$(F95) $< /LINK /o $@
+
+realss$(EEXT): realss.f95
+	$(F95) $< /LINK /o $@
+
+cycle$(EEXT): cycle.f95
+	$(F95) $< /LINK /o $@
+
+reverse$(EEXT): reverse.f95 randoms$(OEXT)
+	$(F95) $^ /LINK /o $@
+
+odds$(EEXT): odds.f95 randoms$(OEXT)
+	$(F95) $^ /LINK /o $@
+
+select$(EEXT): select.f95
+	$(F95) $< /LINK /o $@
+
+select2$(EEXT): select2.f95
+	$(F95) $< /LINK /o $@
+
+angles001$(EEXT): angles001.f95
+	$(F95) $< /LINK /o $@
+
+quadratic002$(EEXT): quadratic002.f95
+	$(F95) $< /LINK /o $@
+
+reals_portable$(EEXT): reals_portable.f95
+	$(F95) $< /LINK /o $@
+
+endlessdo$(EEXT): endlessdo.f95
+	$(F95) $< /LINK /o $@
+
+fun_roots$(EEXT): fun_roots.f95
+	$(F95) $< /LINK /o $@ $(LIBS) $(FDFLAGS)
 
 stats001$(EEXT): stats001.f randoms$(OEXT)
 	$(FC) $^ /LINK
@@ -92,5 +131,6 @@ readblkdata$(EEXT): readblkdata$(OEXT) blockdata$(OEXT)
 clean:
 	$(RM) $(OBJS) $(TARGETS) tracker$(EEXT) entry002$(EEXT) external$(EEXT) dumpblkdata$(EEXT) readblkdata$(EEXT) \
 exams_data$(EEXT) exams001$(EEXT) points$(EEXT) fibonacci$(EEXT) sin$(EEXT) temp$(EEXT) vectors$(EEXT) vectors2$(EEXT) \
-books$(EEXT) books2$(EEXT)
+books$(EEXT) books2$(EEXT) realss$(EEXT) reals_portable$(EEXT) fun_roots$(EEXT) endlessdo$(EEXT) cycle$(EEXT) select$(EEXT) \
+select2$(EEXT) quadratic002$(EEXT) fibonacci002$(EEXT) reverse$(EEXT) odds$(EEXT) angles001$(EEXT)
 

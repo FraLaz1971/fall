@@ -13,8 +13,8 @@ LIBS=-lpgplot -lpng -lz
 #LIBS=
 SRCS=common.f limits.f iostat.f endfile.f endf2unf.f readunf1.f append.f files.f sort.f in2files.f \
 pi.f fun100.f fun101.f fun102.f readfun.f butterfly.f chaos.f euclid.f r2b.f taysin.f \
-form001.f entry.f expand.f
-OBJS = $(SRCS:.f=$(OEXT)) 
+form001.f entry.f expand.f circle_area001.f
+OBJS = $(SRCS:.f=$(OEXT))
 TARGETS = $(OBJS:$(OEXT)=$(EEXT)) blockdata$(OEXT) entry002 external tracker readblkdata$(EEXT) dumpblkdata$(EEXT) welcome$(EEXT)  \
 complex001$(EEXT) use_cube_root$(EEXT) demo_roots$(EEXT) calc_cmplx$(EEXT) quad_roots$(EEXT) quad_roots_case$(EEXT) \
 exams_data$(EEXT) exams001$(EEXT)  bin$(EEXT) points$(EEXT) fibonacci$(EEXT) sin$(EEXT) temp$(EEXT) vectors$(EEXT) \
